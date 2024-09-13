@@ -1,10 +1,12 @@
+import re
+
 def add_contact(contacts):
     phone = get_valid_phone()
     if phone in contacts.keys():
         print('This contact has already been added.')
         return
     name = get_valid_name()
-    email = input('Enter email: ')
+    email = get_valid_email()
     address = input('Enter address: ')
     contacts[phone] = {'name': name, 'email': email, 'address': address}
 
@@ -93,3 +95,11 @@ def get_valid_name():
         if name.isalpha():
             return name
         print('Name must contain only letters.')
+        
+def get_valid_email():
+    valid_pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+    while True:
+        email = input('Enter email: ')
+        if re.search(valid_pattern, email):
+            return email
+        print('Invalid email address.')
