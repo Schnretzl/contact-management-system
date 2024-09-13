@@ -7,7 +7,7 @@ def add_contact(contacts):
         return
     name = get_valid_name()
     email = get_valid_email()
-    address = input('Enter address: ')
+    address = get_valid_address()
     contacts[phone] = {'name': name, 'email': email, 'address': address}
 
 def edit_contact(contacts):
@@ -74,10 +74,10 @@ def export_contacts(contacts):
             file.write(f'Email: {info["email"]}\n')
             file.write(f'Address: {info["address"]}\n\n')
             
-def get_valid_phone():
+def get_valid_phone(prompt = 'Enter phone number: '):
     while True:
         try:
-            phone = input('Enter phone number: ')
+            phone = input(prompt)
             if len(phone) != 10:
                 raise ValueError('Phone number must be 10 digits long.')
             if not phone.isdigit():
@@ -89,17 +89,25 @@ def get_valid_phone():
         else:
             return phone[:3] + '-' + phone[3:6] + '-' + phone[6:]
     
-def get_valid_name():
+def get_valid_name(prompt = 'Enter name: '):
     while True:
-        name = input('Enter name: ')
+        name = input(prompt)
         if name.isalpha():
             return name
         print('Name must contain only letters.')
         
-def get_valid_email():
+def get_valid_email(prompt = 'Enter email: '):
     valid_pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
     while True:
-        email = input('Enter email: ')
+        email = input(prompt)
         if re.search(valid_pattern, email):
             return email
         print('Invalid email address.')
+        
+def get_valid_address(prompt = 'Enter address: '):
+    valid_pattern = r"(^\d+\s[A-z]+$)"
+    while True:
+        address = input(prompt)
+        if re.search(valid_pattern, address):
+            return address
+        print('Invalid address.')
