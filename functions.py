@@ -8,8 +8,29 @@ def add_contact(contacts):
     address = input('Enter address: ')
     contacts[phone] = {'name': name, 'email': email, 'address': address}
 
-def edit_contact():
-    pass
+def edit_contact(contacts):
+    phone = input('Please enter the phone number of the contact you want to edit: ')
+    if phone not in contacts.keys():
+        print('This contact does not exist.')
+        return
+    print('What info would you like edit?')
+    print('1. Name')
+    print('2. Email')
+    print('3. Address')
+    try:
+        choice = int(input())
+        if choice == 1:
+            contacts[phone]['name'] = input('Enter new name: ')
+        elif choice == 2:
+            contacts[phone]['email'] = input('Enter new email: ')
+        elif choice == 3:
+            contacts[phone]['address'] = input('Enter new address: ')
+        else:
+            print('Invalid choice.')
+    except ValueError:
+        print('Invalid input.')
+    except Exception as e:
+        print(f'An error occurred: {e}')
 
 def delete_contact():
     pass

@@ -1,5 +1,6 @@
 import os, functions
 
+contacts = {}
 while True:
     try:
         print("Welcome to the Contact Management System!")
@@ -13,7 +14,7 @@ while True:
         print("7. Quit")
         choice = int(input("Enter your choice: "))
         if choice == 1:
-            functions.add_contact()
+            functions.add_contact(contacts)
         elif choice == 2:
             functions.edit_contact()
         elif choice == 3:
