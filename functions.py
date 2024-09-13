@@ -39,9 +39,22 @@ def delete_contact(contacts):
         return
     del contacts[phone]
 
-def search_contact():
-    pass
-
+def search_contact(contacts):
+    found = False
+    name = input('Please enter the name of the contact you want to search for: ')
+    for phone, info in contacts.items():
+        if info['name'] == name:
+            found = True
+            break
+    if not found:
+        print('Name not found in contacts.')
+        return
+    print(f'Phone: {phone}')
+    print(f'Name: {name}')
+    print(f'Email: {contacts[phone]["email"]}')
+    print(f'Address: {contacts[phone]["address"]}')
+    print()
+    
 def display_contacts(contacts):
     print()
     for phone, info in contacts.items():
