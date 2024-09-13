@@ -19,5 +19,8 @@ Outputs the Name, phone number, Email, and address of all contacts.
 #  Export contacts to a text file
 Saves all contact info to a text file.
 
+# Import contacts from a text file
+Reads contact info from a text file and adds it to the contact list.
+
 #  Quit
 Quits the application.
