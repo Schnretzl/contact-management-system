@@ -1,6 +1,6 @@
 import os, functions
 
-contacts = {}
+contacts = {'1234567890': {'name': 'Alice', 'email': 'alice@example.com', 'address': '123 Main Street'}}
 while True:
     try:
         print("Welcome to the Contact Management System!")
@@ -16,9 +16,9 @@ while True:
         if choice == 1:
             functions.add_contact(contacts)
         elif choice == 2:
-            functions.edit_contact()
+            functions.edit_contact(contacts)
         elif choice == 3:
-            functions.delete_contact()
+            functions.delete_contact(contacts)
         elif choice == 4:
             functions.search_contact()
         elif choice == 5:

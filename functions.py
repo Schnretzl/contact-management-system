@@ -32,8 +32,12 @@ def edit_contact(contacts):
     except Exception as e:
         print(f'An error occurred: {e}')
 
-def delete_contact():
-    pass
+def delete_contact(contacts):
+    phone = input('Please enter the phone number of the contact you want to delete: ')
+    if phone not in contacts.keys():
+        print('This contact does not exist.')
+        return
+    del contacts[phone]
 
 def search_contact():
     pass
