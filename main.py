@@ -1,6 +1,7 @@
 import os, functions
 
-contacts = {'1234567890': {'name': 'Alice', 'email': 'alice@example.com', 'address': '123 Main Street'}}
+contacts = {'1234567890': {'name': 'Alice', 'email': 'alice@example.com', 'address': '123 Main Street'},
+            '2345678901': {'name': 'Bob', 'email': 'bob@example.com', 'address': '234 Elm Street'}}
 while True:
     try:
         print("Welcome to the Contact Management System!")
@@ -20,11 +21,11 @@ while True:
         elif choice == 3:
             functions.delete_contact(contacts)
         elif choice == 4:
-            functions.search_contact()
+            functions.search_contact(contacts)
         elif choice == 5:
-            functions.display_contacts()
+            functions.display_contacts(contacts)
         elif choice == 6:
-            functions.export_contacts()
+            functions.export_contacts(contacts)
         elif choice == 7:
             print("Thank you for using the Contact Management System!")
             break

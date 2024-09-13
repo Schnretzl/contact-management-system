@@ -42,8 +42,14 @@ def delete_contact(contacts):
 def search_contact():
     pass
 
-def display_contacts():
-    pass
+def display_contacts(contacts):
+    print()
+    for phone, info in contacts.items():
+        print(f'Name: {info["name"]}')
+        print(f'Phone: {phone}')
+        print(f'Email: {info["email"]}')
+        print(f'Address: {info["address"]}')
+        print()
 
 def export_contacts():
     pass
