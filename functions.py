@@ -74,6 +74,24 @@ def export_contacts(contacts):
             file.write(f'Email: {info["email"]}\n')
             file.write(f'Address: {info["address"]}\n\n')
     print('Contacts exported to contacts.txt.')
+    
+def import_contacts(contacts):
+    try:
+        with open('contacts.txt', 'r') as file:
+            lines = file.readlines()
+            for i in range(0, len(lines), 5):
+                phone = lines[i].strip().split(': ')[1]
+                if phone in contacts.keys():
+                    continue
+                name = lines[i + 1].strip().split(': ')[1]
+                email = lines[i + 2].strip().split(': ')[1]
+                address = lines[i + 3].strip().split(': ')[1]
+                contacts[phone] = {'name': name, 'email': email, 'address': address}
+        print('Contacts imported from contacts.txt.')
+    except FileNotFoundError:
+        print('contacts.txt not found.')
+    except Exception as e:
+        print(f'An error occurred: {e}')
             
 ################################################################
 

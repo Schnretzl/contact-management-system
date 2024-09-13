@@ -12,7 +12,8 @@ while True:
         print("4. Search for a contact")
         print("5. Display all contacts")
         print("6. Export all contacts to a text file")
-        print("7. Quit")
+        print("7. Import all contacts from a text file")
+        print("8. Quit")
         choice = int(input("Enter your choice: "))
         if choice == 1:
             functions.add_contact(contacts)
@@ -27,6 +28,8 @@ while True:
         elif choice == 6:
             functions.export_contacts(contacts)
         elif choice == 7:
+            functions.import_contacts(contacts)
+        elif choice == 8:
             print("Thank you for using the Contact Management System!")
             break
         else:
