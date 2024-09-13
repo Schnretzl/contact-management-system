@@ -1,7 +1,7 @@
 import os, functions
 
-contacts = {'1234567890': {'name': 'Alice', 'email': 'alice@example.com', 'address': '123 Main Street'},
-            '2345678901': {'name': 'Bob', 'email': 'bob@example.com', 'address': '234 Elm Street'}}
+contacts = {'123-456-7890': {'name': 'Alice', 'email': 'alice@example.com', 'address': '123 Main Street'},
+            '234-567-8901': {'name': 'Bob', 'email': 'bob@example.com', 'address': '234 Elm Street'}}
 while True:
     try:
         print("Welcome to the Contact Management System!")

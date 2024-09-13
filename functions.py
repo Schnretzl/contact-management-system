@@ -1,9 +1,9 @@
 def add_contact(contacts):
-    phone = input('Enter phone number: ')
+    phone = get_valid_phone()
     if phone in contacts.keys():
         print('This contact has already been added.')
         return
-    name = input('Enter name: ')
+    name = get_valid_name()
     email = input('Enter email: ')
     address = input('Enter address: ')
     contacts[phone] = {'name': name, 'email': email, 'address': address}
@@ -71,3 +71,25 @@ def export_contacts(contacts):
             file.write(f'Name: {info["name"]}\n')
             file.write(f'Email: {info["email"]}\n')
             file.write(f'Address: {info["address"]}\n\n')
+            
+def get_valid_phone():
+    while True:
+        try:
+            phone = input('Enter phone number: ')
+            if len(phone) != 10:
+                raise ValueError('Phone number must be 10 digits long.')
+            if not phone.isdigit():
+                raise ValueError('Phone number must contain only digits.')
+            if phone[0] == '0':
+                raise ValueError('Phone number cannot start with 0.')
+        except ValueError as e:
+            print(f'Error: {e}')
+        else:
+            return phone[:3] + '-' + phone[3:6] + '-' + phone[6:]
+    
+def get_valid_name():
+    while True:
+        name = input('Enter name: ')
+        if name.isalpha():
+            return name
+        print('Name must contain only letters.')
