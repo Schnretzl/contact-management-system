@@ -11,7 +11,7 @@ def add_contact(contacts):
     contacts[phone] = {'name': name, 'email': email, 'address': address}
 
 def edit_contact(contacts):
-    phone = input('Please enter the phone number of the contact you want to edit: ')
+    phone = get_valid_phone('Please enter the phone number of the contact you want to edit: ')
     if phone not in contacts.keys():
         print('This contact does not exist.')
         return
@@ -22,11 +22,11 @@ def edit_contact(contacts):
     try:
         choice = int(input())
         if choice == 1:
-            contacts[phone]['name'] = input('Enter new name: ')
+            contacts[phone]['name'] = get_valid_name('Enter new name: ')
         elif choice == 2:
-            contacts[phone]['email'] = input('Enter new email: ')
+            contacts[phone]['email'] = get_valid_email('Enter new email: ')
         elif choice == 3:
-            contacts[phone]['address'] = input('Enter new address: ')
+            contacts[phone]['address'] = get_valid_address('Enter new address: ')
         else:
             print('Invalid choice.')
     except ValueError:
@@ -35,7 +35,7 @@ def edit_contact(contacts):
         print(f'An error occurred: {e}')
 
 def delete_contact(contacts):
-    phone = input('Please enter the phone number of the contact you want to delete: ')
+    phone = get_valid_phone('Please enter the phone number of the contact you want to delete: ')
     if phone not in contacts.keys():
         print('This contact does not exist.')
         return
@@ -43,7 +43,7 @@ def delete_contact(contacts):
 
 def search_contact(contacts):
     found = False
-    name = input('Please enter the name of the contact you want to search for: ')
+    name = get_valid_name('Please enter the name of the contact you want to search for: ')
     for phone, info in contacts.items():
         if info['name'] == name:
             found = True
@@ -73,6 +73,11 @@ def export_contacts(contacts):
             file.write(f'Name: {info["name"]}\n')
             file.write(f'Email: {info["email"]}\n')
             file.write(f'Address: {info["address"]}\n\n')
+    print('Contacts exported to contacts.txt.')
+            
+################################################################
+
+# Validation functions
             
 def get_valid_phone(prompt = 'Enter phone number: '):
     while True:
@@ -105,7 +110,7 @@ def get_valid_email(prompt = 'Enter email: '):
         print('Invalid email address.')
         
 def get_valid_address(prompt = 'Enter address: '):
-    valid_pattern = r"(^\d+\s[A-z]+$)"
+    valid_pattern = r"(^\d+(\s[a-zA-Z]+)+$)"
     while True:
         address = input(prompt)
         if re.search(valid_pattern, address):
