@@ -51,5 +51,10 @@ def display_contacts(contacts):
         print(f'Address: {info["address"]}')
         print()
 
-def export_contacts():
-    pass
+def export_contacts(contacts):
+    for phone, info in contacts.items():
+        with open('contacts.txt', 'a') as file:
+            file.write(f'Phone: {phone}\n')
+            file.write(f'Name: {info["name"]}\n')
+            file.write(f'Email: {info["email"]}\n')
+            file.write(f'Address: {info["address"]}\n\n')
